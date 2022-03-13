@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  api:
+    build: './api'
+    container_name: apicats_container
+    volumes:
+      - './:/home/Documents/cats'
+    command: npm run start
+    ports:
+      - '8080:8080'
+    networks:
+      - backend
+  front:
+    build: './front'
+    container_name: frontcats_container
+    volumes:
+      - './front/:/home/Documents/cats'
+    command: npm run start
+    ports:
+      - '3000:3000'
+    networks:
+      - backend
+  database:
+    image: mysql
+    container_name: databasecats_container
+    volumes:
+      - './database/:/var/lib/mysql'
+    environment:
+      MYSQL_DATABSE: 'catsdb'
+      MYSQL_ROOT_PASSWORD: 'catsdbpassword'
+    ports:
+      - '9603:3306'
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: 'bridge'
