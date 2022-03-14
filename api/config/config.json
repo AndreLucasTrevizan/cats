@@ -3,21 +3,21 @@
     "username": "root",
     "password": "catsdbpassword",
     "database": "catsdb",
-    "host": "database",
+    "host": "db",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "catsdbpassword",
     "database": "catsdb",
-    "host": "database",
+    "host": "db",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": "catsdbpassword",
     "database": "catsdb",
-    "host": "database",
+    "host": "db",
     "dialect": "mysql"
   }
 }

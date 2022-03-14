@@ -27,7 +27,7 @@ services:
     volumes:
       - './database/:/var/lib/mysql'
     environment:
-      MYSQL_DATABSE: 'catsdb'
+      MYSQL_DATABASE: 'catsdb'
       MYSQL_ROOT_PASSWORD: 'catsdbpassword'
     ports:
       - '9603:3306'
