@@ -5,7 +5,7 @@ import './style.css';
 export default function App() {
   return (
     <div className="App">
-      <h1>Cats Apis</h1>
+      <h1>Cats Api</h1>
     </div>
   );
 }

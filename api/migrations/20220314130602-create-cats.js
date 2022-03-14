@@ -17,7 +17,7 @@ module.exports = {
       temperament: {
         type: Sequelize.STRING
       },
-      img: {
+      image: {
         type: Sequelize.STRING
       },
       createdAt: {

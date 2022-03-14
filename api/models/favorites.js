@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   favorites.init({
-    userId: DataTypes.NUMBER,
-    catId: DataTypes.NUMBER
+    user_id: DataTypes.NUMBER,
+    cat_id: DataTypes.NUMBER
   }, {
     sequelize,
     modelName: 'favorites',
