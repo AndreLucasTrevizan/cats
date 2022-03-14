@@ -21,7 +21,7 @@ services:
       - '3000:3000'
     networks:
       - backend
-  database:
+  db:
     image: mysql
     container_name: databasecats_container
     volumes:
