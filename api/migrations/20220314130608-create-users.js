@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       role_id: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
