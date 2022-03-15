@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      cats.belongsTo(models.favorites, {
-        as: 'Role',
+      cats.hasMany(models.favorites, {
+        as: 'Favorites',
         foreignKey: 'cat_id'
       });
     }
