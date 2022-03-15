@@ -20,7 +20,9 @@ class FavoritesController {
 
     async getFavFromUser(req, res) {
         try {
-            let favorites = await model.findAll({where: {user_id: req.params.id_user}});
+            let favorites = await model.findAll({include: [{
+                    model: models.sequelize.models.cats, as: 'cat_favorite'
+                }], where: {user_id: req.params.id_user}});
             res.status(200).json(favorites);
         } catch (error) {
             res.status(500).json({error: error.message});

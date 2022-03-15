@@ -14,10 +14,6 @@ module.exports = (sequelize, DataTypes) => {
         as: 'Role',
         foreignKey: 'role_id'
       });
-      users.hasMany(models.favorites, {
-        as: 'Favorites',
-        foreignKey: 'user_id'
-      });
     }
   }
   users.init({
