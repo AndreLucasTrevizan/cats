@@ -4,6 +4,7 @@ const isAdmin = require('../middlewares/isAdmin');
 
 const UserController = require('../controllers/UserController');
 const CatsController = require('../controllers/CatsController');
+const FavoritesController = require('../controllers/FavoritesController');
 
 router.get('/', (req, res) => {
     res.status(200).json({message: 'Running...'});
@@ -17,5 +18,9 @@ router.delete('/users/:id', UserController.delete);
 
 router.get('/cats', CatsController.getAllCatsFromApi);
 router.get('/breeds', CatsController.breeds);
+
+router.get('/favorites/:id_user', FavoritesController.getFavFromUser);
+router.post('/favorites', FavoritesController.addFav);
+router.delete('/favorites/:id_cat', FavoritesController.deleteFav);
 
 module.exports = router;
