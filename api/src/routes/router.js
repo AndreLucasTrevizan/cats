@@ -16,5 +16,6 @@ router.put('/users/:id', UserController.update);
 router.delete('/users/:id', UserController.delete);
 
 router.get('/cats', CatsController.getAllCatsFromApi);
+router.get('/breeds', CatsController.breeds);
 
 module.exports = router;
