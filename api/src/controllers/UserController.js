@@ -72,6 +72,32 @@ class UserController {
         }
     }
 
+    async update(req, res) {
+        try {
+            const {name, lastname, email} = req.body;
+            await model.update({
+                name: name,
+                lastname,
+                email: email
+            }, {
+                where: {id: req.params.id}
+            });
+            res.status(200).json({msg: 'User Updated'});
+        } catch (error) {
+            res.status(500).json({error: error.message});
+        }
+    }
+
+    async delete(req, res) {
+        try {
+            const { id } = req.params;
+            let user = await model.destroy({where: {id: id}});
+            res.status(200).json(user);
+        } catch (error) {
+            res.status(500).json({msg: error.message});
+        }
+    }
+
 }
 
 module.exports = new UserController();
