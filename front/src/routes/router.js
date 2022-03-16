@@ -11,12 +11,12 @@ import Login from '../pages/Login';
 const router = () => {
     return(
         <BrowserRouter>
-            <Header />
+            {window.location.pathname !== "/sign_in" ? <Header /> : ''}
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/cats/:id" component={Cat} />
+                <Route exact path="/sign_in" component={Login} />
             </Switch>
-            <Route exact path="/sign_in" component={Login} />
         </BrowserRouter>
     );
 };
