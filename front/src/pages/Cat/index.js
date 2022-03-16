@@ -16,12 +16,29 @@ export default function Cat() {
     useEffect(() => {
         async function loadCat() {
             let response = await api.get(`/cats/${id}`);
+            let catApi = response.data;
+            
+            if(!catApi) {
+                history.replace('/');
+                return;
+            }
+
+            setCat(cat);
+            setLoading(false);
         }
     
         loadCat();    
     }, [history, id]);
+
+    if(loading) {
+        return(
+            <div className="cat-info">
+                <h1>Carregando dados...</h1>
+            </div>
+        );
+    }
     
     return (
-        <p>Cat</p>
+        <p>{cat.name}</p>
     );
 }

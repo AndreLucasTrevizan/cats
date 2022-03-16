@@ -30,7 +30,7 @@ export default function Home() {
                             <div className="cat-card-info">
                                 <span>{cat.name}</span>
                                 <div className="button-card">
-                                    <Link to={`/cat/${cat.id}`}>
+                                    <Link to={`/cats/${cat.id}`}>
                                         <i className="material-icons">info</i>
                                         Ver mais
                                     </Link>
