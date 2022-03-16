@@ -32,6 +32,7 @@ class FavoritesController {
     async deleteFav(req, res) {
         try {
             await model.destroy({where: {cat_id: req.params.id_cat}});
+            res.status(200).json({msg: 'Cat Deleted'});
         } catch (error) {
             res.status(500).json({error: error.message});
         }

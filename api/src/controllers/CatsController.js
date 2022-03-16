@@ -42,6 +42,15 @@ class CatsController {
         }
     }
 
+    async getInfoFromCat(req, res) {
+        try {
+            let cat = await model.findOne({where: {id: req.params.id}});
+            res.status(200).json(cat);
+        } catch (error) {
+            res.status(500).json({error: error.message});
+        }
+    }
+
 }
 
 module.exports = new CatsController();

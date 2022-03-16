@@ -17,6 +17,7 @@ router.put('/users/:id', UserController.update);
 router.delete('/users/:id', UserController.delete);
 
 router.get('/cats', CatsController.getAllCatsFromApi);
+router.get('/cats/:id', CatsController.getInfoFromCat);
 router.get('/breeds', CatsController.breeds);
 
 router.get('/favorites/:id_user', FavoritesController.getFavFromUser);
