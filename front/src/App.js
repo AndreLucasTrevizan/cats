@@ -1,11 +1,11 @@
-import {useState, useEffect} from 'react';
+import React from 'react';
+
+import Router from './routes/router';
 
 import './style.css';
 
 export default function App() {
   return (
-    <div className="App">
-      <h1>Cats Api</h1>
-    </div>
+    <Router />
   );
 }

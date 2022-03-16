@@ -1,0 +1,27 @@
+header {
+    height: 60px;
+    background-color: brown;
+    color: #FFF;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;
+    padding: 50px;
+}
+
+header a {
+    transition: all 0.5s;
+}
+
+header a:hover {
+    background-color: #FFF;
+    border-radius: 10px;
+    color: #000;
+    cursor: pointer;
+    padding: 5px;
+}
+
+header h1 {
+    text-shadow: 5px 0px 4px black;
+}
