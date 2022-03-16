@@ -1,20 +1,31 @@
 header {
-    height: 60px;
     background-color: brown;
-    color: #FFF;
-    width: 100%;
+    padding: 20px;
+}
+
+header div {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     font-size: 30px;
-    padding: 50px;
+    height: 60px;
+    color: #FFF;
+    width: 1200px;
+    margin: 0 auto;
 }
 
 header a {
-    transition: all 0.5s;
+    text-decoration: none;
+    color: #FFF;
 }
 
-header a:hover {
+.logo {
+    transition: all 0.5s;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.logo:hover {
     background-color: #FFF;
     border-radius: 10px;
     color: #000;

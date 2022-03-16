@@ -6,6 +6,7 @@ import Header from '../Components/Header';
 //Pages
 import Home from '../pages/Home';
 import Cat from '../pages/Cat';
+import Login from '../pages/Login';
 
 const router = () => {
     return(
@@ -15,6 +16,7 @@ const router = () => {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/cats/:id" component={Cat} />
             </Switch>
+            <Route exact path="/sign_in" component={Login} />
         </BrowserRouter>
     );
 };

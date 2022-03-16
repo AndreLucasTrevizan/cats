@@ -23,12 +23,20 @@ export default function Cat() {
                 return;
             }
 
-            setCat(cat);
+            setCat(catApi);
             setLoading(false);
         }
     
         loadCat();    
     }, [history, id]);
+
+    function setFavCat() {
+        let token = JSON.parse(localStorage.getItem('token'));
+        if(!token) {
+            history.replace('/sign_in');
+            return;
+        }
+    }
 
     if(loading) {
         return(
@@ -39,6 +47,25 @@ export default function Cat() {
     }
     
     return (
-        <p>{cat.name}</p>
+        <div className="container">
+            <h2>{cat.name}</h2>
+            <div className="cat-info">
+                <div className="image-cat">
+                    <figure>
+                        <img src={cat.image} alt={cat.name} />
+                    </figure>
+                </div>
+                <div className="details">
+                    <p>{cat.description}</p>
+                    <span>Comportamento: </span>{cat.temperament}
+                    <div className="buttons-cat">
+                        <span onClick={() => setFavCat()}>
+                            <i className="material-icons">add</i>
+                            Favoritar
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
