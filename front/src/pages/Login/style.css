@@ -1,8 +1,9 @@
-.container {
+.form-display {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 100px);
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: calc(100vh - 140px);
 }
 
 .form {

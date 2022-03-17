@@ -11,7 +11,7 @@ import Login from '../pages/Login';
 const router = () => {
     return(
         <BrowserRouter>
-            {window.location.pathname !== "/sign_in" ? <Header /> : ''}
+            <Header />
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/cats/:id" component={Cat} />

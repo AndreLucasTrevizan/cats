@@ -15,6 +15,7 @@ class UserController {
                 let isValidHash = bcryptjs.compareSync(password, user.password);
 
                 let payload = {
+                    id: user.id,
                     name: user.name,
                     email: user.email,
                     role: user.role_id
@@ -22,7 +23,7 @@ class UserController {
 
                 if(isValidHash) {
                     const token = jwt.sign({payload}, process.env.SECRET, {expiresIn: '24h'});
-                    res.status(200).json({token: token});
+                    res.status(200).json({user: payload, token: token});
                 } else {
                     res.status(403).json({msg: 'Email or password is invalid'});
                 }   

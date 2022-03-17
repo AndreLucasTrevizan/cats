@@ -12,6 +12,7 @@ export default function Cat() {
 
     const [cat, setCat] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [idUser, setIdUser] = useState('');
 
     useEffect(() => {
         async function loadCat() {
@@ -31,11 +32,53 @@ export default function Cat() {
     }, [history, id]);
 
     function setFavCat() {
+        console.log('ok, entrei');
         let token = JSON.parse(localStorage.getItem('token'));
+        let user = JSON.parse(localStorage.getItem('user'));
         if(!token) {
             history.replace('/sign_in');
             return;
         }
+
+        setIdUser(user.id);
+
+        let data = {
+            id_user: idUser,
+            id_cat: id
+        }
+        let favs = JSON.parse(localStorage.getItem('favs'));
+        
+        console.log(favs);
+        if(favs) {
+            let isValid = favs.find(cat => cat.id_cat == id);
+            if(isValid) {
+                alert('Você já adicionou esse gato a sua lista!');
+                return;
+            }
+
+            api.post('/favorites', data).then(res => {
+                if(res.status == 201) {
+                    if(favs) {
+                        favs.push(data);
+                    } else {
+                        localStorage.setItem('favs', JSON.stringify(data));
+                    }
+                }
+            });
+        } else {
+            console.log('Ook, não tinha gatos e adicionei um');
+            api.post('/favorites', data).then(res => {
+                if(res.status == 201) {
+                    if(favs) {
+                        let favorites = [];
+                        favorites.push(data);
+                        localStorage.setItem('favs', JSON.stringify(favorites));
+                    }
+                }
+            });
+        }
+
+
     }
 
     if(loading) {
