@@ -52,21 +52,42 @@ class UserController {
 
     async create(req, res) {
         try {
+            let errors = [];
             const {name, lastname, email, password, role_id} = req.body;
-            let hash = bcryptjs.hashSync(password, 15);
-            let user = await model.findOne({where: {email: email}});
-            if(!user) {
-                await model.create({
-                    name: name,
-                    lastname: lastname,
-                    email: email,
-                    password: hash,
-                    role_id: (role_id !== undefined || role_id === '') ? role_id : 2
-                });
+            if(name == undefined || name == '') {
+                errors.push('Name cannot be empty!');
+            }
 
-                res.status(201).json({msg: 'User Created'});
+            if(lastname == undefined || lastname == '') {
+                errors.push('Lastname cannot be null!');
+            }
+
+            if(email == undefined || email == '') {
+                errors.push('Email cannot be empty!');
+            }
+
+            if(password == undefined || password == '') {
+                errors.push('Password cannot be empty!');
+            }
+
+            if(errors.length > 0) {
+                res.status(403).json({errors});
             } else {
-                res.status(403).json({msg: 'Email is already in use'});
+                let hash = bcryptjs.hashSync(password, 15);
+                let user = await model.findOne({where: {email: email}});
+                if(!user) {
+                    await model.create({
+                        name: name,
+                        lastname: lastname,
+                        email: email,
+                        password: hash,
+                        role_id: (role_id !== undefined || role_id === '') ? role_id : 2
+                    });
+
+                    res.status(201).json({msg: 'User Created'});
+                } else {
+                    res.status(403).json({msg: 'Email is already in use'});
+                }
             }
         } catch (error) {
             res.status(500).json({msg: error.message});

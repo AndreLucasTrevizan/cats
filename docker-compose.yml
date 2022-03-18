@@ -30,7 +30,7 @@ services:
       MYSQL_DATABASE: 'catsdb'
       MYSQL_ROOT_PASSWORD: 'catsdbpassword'
     ports:
-      - '9306:3306'
+      - '9307:3306'
     networks:
       - backend
 

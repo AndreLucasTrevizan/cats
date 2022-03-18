@@ -57,3 +57,27 @@
     opacity: 0.5;
     transition: all 0.5s;
 }
+
+.actions-users {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-bottom: 1px solid black;
+}
+
+.logo {
+    text-decoration: none;
+    background-color: brown;
+    padding: 10px;
+    border-radius: 10px;
+    color: #FFF;
+}
+
+.logo:hover {
+    transition: all 0.3s;
+    box-shadow: 0px 0px 10px black;
+}
+
+.logout:hover {
+    cursor: pointer;
+}

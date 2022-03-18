@@ -75,11 +75,11 @@ export default function Cat() {
                 </div>
                 <div className="details">
                     <p>{cat.description}</p>
-                    <span>Comportamento: </span>{cat.temperament}
+                    <span>Temperament: </span>{cat.temperament}
                     <div className="buttons-cat">
                         <span onClick={() => setFavCat()}>
                             <i className="material-icons">add</i>
-                            Favoritar
+                            Add Favorite
                         </span>
                     </div>
                 </div>

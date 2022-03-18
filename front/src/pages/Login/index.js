@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
+
+import {toast} from 'react-toastify';
 
 import api from '../../services/api';
 
@@ -24,7 +26,7 @@ export default function Login() {
                 return;
             }
         }).catch(err => {
-            console.log(err.message);
+            toast.error(err.response.data.msg);
         });
     }
 
@@ -53,6 +55,8 @@ export default function Login() {
                 </div>
                 <div className="form-group">
                     <button onClick={sendData}>Entrar</button>
+                    <hr/>
+                    <Link to="/register">Sign Up</Link>
                 </div>
             </div>
         </div>

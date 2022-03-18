@@ -14,9 +14,12 @@ export default function Favorites() {
 
     useEffect(() => {
         async function load() {
-            console.log(params);
-
             let responseAPI = await api.get(`/favorites/${params.id_user}`);
+            let token = JSON.parse(localStorage.getItem('token'));
+            if(!token) {
+                history.push('/sign_in');
+                return;
+            }
             setFavs(responseAPI.data);
         }
 
@@ -44,7 +47,7 @@ export default function Favorites() {
     return(
         <div className="container">
             {favs.length === 0 &&
-                <span  className="nofavs">Você ainda não possui favoritos! :c</span>
+                <span  className="nofavs">You don't have favorites yet! :c</span>
             }
             <div className="grid-cats">
                 {favs.map(cat => (
@@ -57,7 +60,7 @@ export default function Favorites() {
                             <div className="button-card">
                                 <Link to={`/cats/${cat.cat_favorite.id}`}>
                                     <i className="material-icons">info</i>
-                                    Ver mais
+                                    More
                                 </Link>
                                 <a className="delete-btn" onClick={() => {deleteCat(cat.cat_favorite)}}>
                                     <i className="material-icons">delete</i>

@@ -19,20 +19,6 @@ header a {
     color: #FFF;
 }
 
-.logo {
-    transition: all 0.5s;
-    text-decoration: none;
-    color: #FFF;
-}
-
-.logo:hover {
-    background-color: #FFF;
-    border-radius: 10px;
-    color: #000;
-    cursor: pointer;
-    padding: 5px;
-}
-
 header h1 {
     text-shadow: 5px 0px 4px black;
 }
