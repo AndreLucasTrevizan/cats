@@ -1,0 +1,10 @@
+.button-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.delete-btn:hover {
+    cursor: pointer;
+}

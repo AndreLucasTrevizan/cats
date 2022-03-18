@@ -8,11 +8,16 @@ class FavoritesController {
     async addFav(req, res) {
         try {
             const {id_user, id_cat} = req.body;
-            await model.create({
-                user_id: id_user,
-                cat_id: id_cat
-            });
-            res.status(201).json({msg: 'Cat added'});
+            let cat = await model.findOne({where: {cat_id: id_cat}});
+            if(!cat) {
+                await model.create({
+                    user_id: id_user,
+                    cat_id: id_cat
+                });
+                res.status(201).json({msg: 'Cat added'});
+            } else {
+                res.status(403).json({msg: 'Cat already exists in your favorites!'});
+            }
         } catch (error) {
             res.status(500).json({error: error.message});
         }
