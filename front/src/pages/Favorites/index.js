@@ -13,12 +13,15 @@ export default function Favorites() {
 
     useEffect(() => {
         async function load() {
+            console.log(params);
+
             let responseAPI = await api.get(`/favorites/${params.id_user}`);
             let favsOfUser = responseAPI.data;
 
             if(!favsOfUser.length > 0) {
-                history.push('/');
-                return;
+                return (
+                    <div>Você ainda não possui nenhum favorito! :c</div>
+                );
             }
             
             setFavs(responseAPI.data);
@@ -29,6 +32,9 @@ export default function Favorites() {
 
     return(
         <div className="container">
+            {favs.length === 0 &&
+                <span>Você ainda não possui favoritos! :c</span>
+            }
             <div className="grid-cats">
                 {favs.map(cat => (
                     <div className='cat-card' key={cat.cat_favorite.id}>

@@ -42,29 +42,13 @@ export default function Cat() {
         setIdUser(user.id);
 
         let data = {
-            user_id: idUser,
+            user_id: 1,
             cat_id: id
         }
-
-        let favs = [];
-        let favsInLocal = JSON.parse(localStorage.getItem('favs'));
-
-        if(favsInLocal != null) {
-            let isThere = favsInLocal.find(el => el.id_cat === id);
-            if(isThere) {
-                alert('Gato já favoritado!');
-                return;
-            }
-        }
-
+        console.log(data);
         api.post('/favorites', data).then(res => {
             if(res.status == 201) {
                 alert('Gato Favoritado!');
-                favs.push(data);
-                localStorage.setItem('favs', JSON.stringify(favs));
-           } else if(res.status == 403) {
-               alert(res.data.msg);
-               return;
            }
         });
 
