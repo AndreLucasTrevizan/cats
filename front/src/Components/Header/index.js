@@ -18,6 +18,10 @@ export default function Header() {
         getUser();
     });
 
+    useEffect(() => {
+
+    }, [userId]);
+
     return (
         <header>
             <div>

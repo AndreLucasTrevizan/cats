@@ -8,3 +8,36 @@
 .delete-btn:hover {
     cursor: pointer;
 }
+
+.actions {
+    margin: 20px 0px 20px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.yes {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.yes:hover {
+    background-color: rgb(0, 104, 35);
+    color: #FFF;
+    transition: all 0.5s;
+}
+
+.no {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.nofavs {
+    font-size: 35px;
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

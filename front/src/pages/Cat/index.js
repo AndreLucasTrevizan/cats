@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 import api from '../../services/api';
 
@@ -39,17 +40,17 @@ export default function Cat() {
             return;
         }
 
-        setIdUser(user.id);
-
         let data = {
-            user_id: 1,
-            cat_id: id
+            id_user: user.id,
+            id_cat: id
         }
         console.log(data);
         api.post('/favorites', data).then(res => {
-            if(res.status == 201) {
-                alert('Gato Favoritado!');
+            if(res.status === 201) {
+                toast.success('Cat Favorited');
            }
+        }).catch(err => {
+            toast.error(err.response.data.msg);
         });
 
 

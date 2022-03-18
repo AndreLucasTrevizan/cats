@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useHistory, Link} from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 import api from '../../services/api';
 
@@ -16,24 +17,34 @@ export default function Favorites() {
             console.log(params);
 
             let responseAPI = await api.get(`/favorites/${params.id_user}`);
-            let favsOfUser = responseAPI.data;
-
-            if(!favsOfUser.length > 0) {
-                return (
-                    <div>Você ainda não possui nenhum favorito! :c</div>
-                );
-            }
-            
             setFavs(responseAPI.data);
         }
 
         load();
     }, [history, params]);
 
+    function deleteCat(cat) {
+        toast.info(
+            (
+            <div>
+                <p>Are you sure to remove the {cat.name} of your favorites?</p>
+                <div className="actions">
+                    <span className="yes" onClick={() => deleting(cat.id)}>Yes</span>
+                </div>
+            </div>
+        ), {
+            closeButton: true,
+        });
+    };
+
+    function deleting(id) {
+        api.delete(`/favorites/${id}`);
+    }
+
     return(
         <div className="container">
             {favs.length === 0 &&
-                <span>Você ainda não possui favoritos! :c</span>
+                <span  className="nofavs">Você ainda não possui favoritos! :c</span>
             }
             <div className="grid-cats">
                 {favs.map(cat => (
@@ -48,7 +59,7 @@ export default function Favorites() {
                                     <i className="material-icons">info</i>
                                     Ver mais
                                 </Link>
-                                <a className="delete-btn">
+                                <a className="delete-btn" onClick={() => {deleteCat(cat.cat_favorite)}}>
                                     <i className="material-icons">delete</i>
                                 </a>
                             </div>
